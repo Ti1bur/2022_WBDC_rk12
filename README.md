@@ -7,9 +7,12 @@ rank ：12  (Student : 8, Score:0.727216)
 利用开源Bert和开源Visual模型权重来初始化文本和图片, 再送入自己的model中对文本进行交互, 主要构建了两个模型.
 
 (1) 单流(Single_Stream)
+
     文本过Bert(roberta-wwm-ext)的embedding, 图片过Vit(Clip-Vit-B/16)做成embedding, 拼接在一起后送入Bert的12层Transformer块.
     裸模型未预训练成绩: 0.67 - 0.68, 预训练任务: ITM, MFM, MLM, 预训练后(Trick)成绩: 0.720
+    
 (2) 双流(Double_stream)
+
     文本过Bert(roberta-wwm-ext)的12层Transformer块, 图片过Vit(Clip-Vit-B/16)做成(Batch_size, Max_frame, Vision_dim), 送入3层Transformer-Attention块中(图片做Q, 文本做K, V)
     裸模型未预训练成绩: 0.700，      预训练任务: ITM, ITA, MLM, 预训练后(Trick)成绩: 0.715
 
@@ -18,14 +21,21 @@ rank ：12  (Student : 8, Score:0.727216)
 Trick: EMA, SWA, FGM, PGD
 
 ## 经验与总结
+
 (1)经验: 多模态任务最好采用经过了大规模多模态数据预训练的模型权重(特指Clip), (2022年7月Clip开源中文语料库预训练权重). 
+
          多做多模态信息的交互任务, 比如单流中预训练的ITM, 双流中的Cross_attention
 
 (2)赛后学习(大佬发言)
+
         (1) 在限制Inference时间的比赛中都要尝试利用大模型(Bert-large, Clip-large)来对预训练数据打伪标, 一是为了能更好地发挥经过预训练的大模型的性能, 二是更加充分的利用预训练数据.
+            
             伪标流程: 1. 利用Large模型在训练集上训练好高分model, 并对无标注数据进行伪标标注
+                     
                      2. 两种思路: 在进行预训练的时候多一个对标签的任务, 平衡loss, 相当于多任务学习.
+                                 
                                  在训练时先对伪标数据进行训练, 再用训练集进行修正.
+        
         (2) 在小样本的情况下, 多分类任务中出现的小类, 会由于F1_marco而导致对小类错分极为敏感, 故可观察模型在验证集中, 对小类分类的正确率, 强行提高小类的预测概率.
             
 
