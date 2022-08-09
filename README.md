@@ -1,6 +1,6 @@
 ## 比赛
 微信大数据挑战赛(小样本多模态分类任务)
-rank ：12  (Student : 8, Score:0.727216)
+rank ：12  (Student Rank : 8, Score : 0.727216)
 
 ## 思路
 
@@ -42,6 +42,7 @@ Trick: EMA, SWA, FGM, PGD
             
 (3) 其他大佬的总结
 ![image](https://github.com/Ti1bur/2022WeChatBigDataChallenge/blob/main/Summarize.jpg)
+
 ## 代码说明
 
 ------
