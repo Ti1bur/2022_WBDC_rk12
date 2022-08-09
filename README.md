@@ -40,7 +40,8 @@ Trick: EMA, SWA, FGM, PGD
         
    (2) 在小样本的情况下, 多分类任务中出现的小类, 会由于F1_marco而导致对小类错分极为敏感, 故可观察模型在验证集中, 对小类分类的正确率, 强行提高小类的预测概率.
             
-
+(3) 其他大佬的总结
+![image](https://github.com/Ti1bur/2022WeChatBigDataChallenge/blob/main/Summarize.jpg)
 ## 代码说明
 
 ------
