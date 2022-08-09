@@ -1,6 +1,8 @@
 ## 比赛
 微信大数据挑战赛(小样本多模态分类任务)
 rank ：12  (Student Rank : 8, Score : 0.727216)
+### 赛题描述和页面
+[2022微信大数据挑战赛赛题介绍和描述](https://algo.weixin.qq.com/problem-description)
 
 ## 思路
 
